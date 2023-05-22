@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>MUDpress</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="gssbstyle.css">
+
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+		    <style>
+        .chatbox {
+            width: 300px;
+            height: 500px;
+            border: 1px solid black;
+            padding: 10px;
+            overflow: auto;
+        }
+        .inputbox {
+            width: 300px;
+        }
+    </style>
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="index.html" id="branding">
+						<!--2021-3-6-ggc <img src="images/logo.png" alt="" class="logo"> -->
+						<div class="logo-text">
+                            <h1 class="site-title">MUD press</h1>
+							<small class="site-description">Welcome to MUD press</small>
+						</div>
+					</a> <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="index.html">MUD PLAYGROUND</a></li>
+							<li class="menu-item"><a href="news.html">NEWS</a></li>
+							<li class="menu-item current-menu-item"><a href="riso.html">riso</a></li>
+							<li class="menu-item"><a href="shop.html">shop</a></li>
+							<li class="menu-item"><a href="about.html">ABOUT</a></li>
+							<li class="menu-item"><a href="contact.html">contact</a></li>
+						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<main class="main-content">
+				
+				<div class="page">
+					<div class="container">
+<!--						<h2 class="entry-title">关于泥巴</h2>-->
+<!--                        <p>2020年成立于杭州。</p>-->
+<!--						<p>-->
+<!--                            MUDpress致力于营造Risograph青年文化社群，分享、推广普及印刷装帧工艺，-->
+<!--                            让独具创造的每个人自我表达的同时彼此看见和联结。</p>-->
+
+
+<!--	<hr class="separator padding">-->
+
+    <h2 class="entry-title">MUDpress小助手【内测版】</h2>
+    <div class="chatbox" id="chatbox"></div>
+    <input class="inputbox" id="inputbox" type="text" onkeydown="if(event.key === 'Enter') submitMessage()" placeholder="输入问题...">
+    <button onclick="submitMessage()">提交</button>
+
+    <script>
+        const qaPairs = [
+            {
+                question: "你们提供什么种类的印刷服务？",
+                answer: "我们只有risograph一种工艺 ，目前只提供riso印刷，不提供印后处理（如裁切、装订、装裱、模切等）。",
+                keywords: ["印刷", "服务", "种类" , "提供"]
+            },
+                {
+                question: "你们riso印刷的最大尺寸是多少？",
+                answer: "我们的riso机器最大印刷尺寸A3（297*420mm）。",
+                keywords: ["尺寸", "大小", "riso", "印刷"]
+            },
+            {
+                question: "你们备有哪些印刷纸张？",
+                answer: "我们备有约20种无涂布纸张（普通的、未经过涂布加工的印刷纸叫非涂布纸uncoated paper），具体见纸张库存表。请注意，铜版纸、硫酸纸、杜邦纸、水洗纸等纸张油墨无法附着，我们无法印刷。机器可以过的纸的克重是60g-250g。",
+                keywords: ["纸张", "印刷"]
+            },
+            {
+                question: "我可以定制我的原创作品吗？有最低起印数量吗？",
+                answer: "我们可以定制您的原创作品，最少15份起印（相同内容的15份）。riso印刷是需要制版的工艺，成本相对较高，会比普通打印贵。",
+                keywords: ["定制", "原创", "数量", "riso","最低","起印"]
+            },
+            {
+                question: "MUDpress怎样计算印刷价格？",
+                answer: "我们根据作品的颜色数量（制版数量）、印刷份数（最少15张起印）、纸张（有些纸张需要加价，详见纸张库存表）来计算价格。如需印刷书籍，请联系我们告知书籍的尺寸、页数方便我们计算。",
+                keywords: ["计算", "价格", "颜色数量", "制版", "印刷份数", "纸张"]
+            },
+            {
+                question: "riso印刷会有什么效果？",
+                answer: "riso印刷作品会产生一些错位（我们会控制在3mm以内）、颜色不均匀的效果。根据文件灰度值的不同，印刷作品和原作品、印刷效果图会产生色差。如果不能接受，请寻找其他印刷工艺如：专色、微喷、丝网印刷等。",
+                keywords: ["效果", "印刷", "riso"]
+            },
+            {
+                question: "你们有哪些颜色可以选择？",
+                answer: "我们现在有17种颜色（电子色卡表），电子色卡和实物存在一定的差别。红色滚筒的状态比较差，如果作品有大面积红色，请寻找其他工作室印刷。",
+                keywords: ["颜色", "选择" ,"色卡"]
+            },
+            {
+                question: "你们的地址在哪？",
+                answer: "我们的地址在杭州市转塘镇凤凰创意园A3-3-107（高德搜泥巴文化有限公司可以导航到，其他导航软件搜映庆电影）。",
+                keywords: ["地址", "位置" ,"在哪"]
+            },
+            {
+                question: "你们的工作时间是什么？",
+                answer: "我们的工作时间一般是上午10:00-下午18:00，具体日期不定。如果来现场打印需要提前两天预约，可以联系我们告诉我们您想预约的日期和具体时间。",
+                keywords: ["工作时间", "预约" ,"时间","周末","周"]
+            },
+            {
+                question: "印刷过程需要多长时间？",
+                answer: "一天最多印刷两个颜色，然后需要将作品进行晾干再继续印刷。颜色数量越多，印刷需要的时间越长。如果没有晾干就继续印刷，作品会被没干的油墨蹭脏。",
+                keywords: ["时间", "印刷过程","多长","印刷"]
+            },
+            {
+                question: "如何查看文件灰度值（k值）？",
+                answer: "查看文件灰度值（k值）：photoshop：窗口，信息（F8），信息窗口右上角小横杠，面板选项，第一颜色信息选灰度。鼠标移动到作品任意位子，信息窗口会显示灰度（k)值。",
+                keywords: ["灰度值", "查看", "k值"]
+            },
+            // 其他问题和答案
+        ];
+
+
+        // 问答逻辑
+        // 问答逻辑
+        function submitMessage() {
+            let inputbox = document.getElementById('inputbox');
+            let chatbox = document.getElementById('chatbox');
+            let userInput = inputbox.value.toLowerCase();  // 转为小写以便匹配
+            let matchingQuestions = [];
+
+            // 显示用户的输入
+            chatbox.innerHTML += `<p>我：${inputbox.value}</p>`;
+
+            // 清空输入框
+            inputbox.value = '';
+
+            // 检查每个问题是否包含用户输入的关键字
+            for (let qaPair of qaPairs) {
+                for (let keyword of qaPair.keywords) {
+                    if (userInput.includes(keyword)) {
+                        matchingQuestions.push(qaPair);
+                        break;  // 当找到一个匹配的关键字就跳出内部循环
+                    }
+                }
+            }
+
+            // 如果没有匹配的问题，选取随机两个问题
+            if (matchingQuestions.length === 0) {
+                let msg = '你好，很高兴为你服务，你可以输入你想问的问题。例如，你是否想问：<br>';
+                for (let i = 0; i < 2; i++) {
+                    let randomIndex = Math.floor(Math.random() * qaPairs.length);
+                    msg += ` <a href="#" onclick="reply('${qaPairs[randomIndex].answer}')">${qaPairs[randomIndex].question}</a><br>`;
+                }
+                msg += '';
+                chatbox.innerHTML += `<p>MUDpress小助手：${msg}</p>`;
+            }else if (matchingQuestions.length === 1){
+                // 如果有1个匹配的问题，列出这一个匹配的问题
+                let msg = '你好，你是否想问：<br>';
+                for (let qaPair of matchingQuestions) {
+                    msg += ` <a href="#" onclick="reply('${qaPair.answer}')">${qaPair.question}</a>`;
+                }
+                msg += '';
+                chatbox.innerHTML += `<p>MUDpress小助手：${msg}</p>`;
+            } else {
+                // 如果有匹配的问题，列出所有匹配的问题
+                let msg = '你好，你是否想问：<br>';
+                for (let qaPair of matchingQuestions) {
+                    msg += ` <a href="#" onclick="reply('${qaPair.answer}')">${qaPair.question}</a><br>`;
+                }
+                msg += '';
+                chatbox.innerHTML += `<p>MUDpress小助手：${msg}</p>`;
+            }
+
+            // 滚动到聊天框的底部
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function reply(answer) {
+            let chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += `<p>MUDpress小助手：${answer}</p>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+    </script>
+
+
+			</main> <!-- .main-content -->
+
+                <footer class="site-footer">
+                    <div class="container">
+                        <div class="pull-left">
+
+                            <address>
+                                <strong>MUDpress</strong>
+								<p>  </p>
+                                <p>浙江省杭州市西湖区转塘镇凤凰创意国际A3幢-3单元-107室</p>
+								<p>Room 107, Unit 3, Building A3, Phoenix Creative Park, Zhuantang Town, Xihu District, Hangzhou, Zhejiang Province, China</p>
+                            </address>
+
+<!--                            <a href="#" class="email">gssbspace@126.com     partylinhai@gmail.com</a>-->
+							<p>Email: mudpress@163.com</p>
+                        </div> <!-- .pull-left -->
+                        <div class="pull-right">
+
+                            <div class="social-links">
+<!--                                <a href="#"><i class="fa fa-facebook"></i></a>-->
+<!--                                <a href="#"><i class="fa fa-google-plus"></i></a>-->
+<!--                                <a href="#"><i class="fa fa-twitter"></i></a>-->
+<!--                                <a href="#"><i class="fa fa-pinterest"></i></a>-->
+								<a href="contact.html">联</a>
+								<a href="contact.html">系</a>
+								<a href="contact.html">我</a>
+								<a href="contact.html">们</a>
+
+                            </div>
+
+                        </div> <!-- .pull-right -->
+
+                        <div class="colophon">Copyright © 2020-2023. Designed by <a href="http://mudpress.net/" title="Designed by mudpress.net" target="_blank">MUDpress</a>. All rights reserved.</div>
+
+                    </div> <!-- .container -->
+                </footer> <!-- .site-footer -->
+            </div>
+
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+
+	</body>
+
+</html>
