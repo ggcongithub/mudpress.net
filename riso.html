@@ -200,6 +200,8 @@
         }
 
         function reply(answer) {
+	    event.preventDefault(); // 阻止默认的链接跳转行为
+		 
             let chatbox = document.getElementById('chatbox');
             chatbox.innerHTML += `<p>MUDpress小助手：${answer}</p>`;
             chatbox.scrollTop = chatbox.scrollHeight;
