@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>MUDpress</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="gssbstyle.css">
+
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+		    <style>
+        .chatbox {
+            width: 300px;
+            height: 500px;
+            border: 1px solid black;
+            padding: 10px;
+            overflow: auto;
+        }
+        .inputbox {
+            width: 300px;
+        }
+    </style>
+
+	</head>
+
+
+	<body>
+
+		<div id="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="index.html" id="branding">
+						<!--2021-3-6-ggc <img src="images/logo.png" alt="" class="logo"> -->
+						<div class="logo-text">
+                            <h1 class="site-title">MUD press</h1>
+							<small class="site-description">Welcome to MUD press</small>
+						</div>
+					</a> <!-- #branding -->
+
+					<!-- Default snippet for navigation -->
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="index-en.html">MUD PLAYGROUND</a></li>
+							<li class="menu-item"><a href="news-en.html">NEWS</a></li>
+							<li class="menu-item current-menu-item"><a href="riso-en.html">riso</a></li>
+							<li class="menu-item"><a href="shop-en.html">shop</a></li>
+							<li class="menu-item"><a href="about-en.html">ABOUT</a></li>
+							<li class="menu-item"><a href="contact-en.html">contact</a></li>
+<!--							<li class="menu-item"><a href="index-en.html">English</a>-->
+							<li class="menu-item"><a href="index.html">中文</a></li>						</ul> <!-- .menu -->
+					</div> <!-- .main-navigation -->
+
+					<div class="mobile-navigation"></div>
+				</div>
+			</div> <!-- .site-header -->
+
+			<main class="main-content">
+				
+				<div class="page">
+					<div class="container">
+						<h2 class="entry-title">Pre-printing Notice for Riso</h2>
+                        <p>Potential effects during printing (unavoidable)</p>
+						<p>Post-printing</p>
+						<p>File pre-separation (spectrolite app)</p>
+						<p>Printing price estimate</p>
+
+
+	<hr class="separator padding">
+
+    <h2 class="entry-title">MUDpress Helper【Beta】</h2>
+	<div class="chatbox" id="chatbox"></div>
+	<input class="inputbox" id="inputbox" type="text" onkeydown="if(event.key === 'Enter') submitMessage()" placeholder="Type your question...">
+	<button onclick="submitMessage()">Submit</button>
+
+    <script>
+        const qaPairs = [
+            {
+				question: "What kind of printing services do you offer?",
+				answer: "We only offer risograph printing at the moment. We do not provide post-printing services (such as cutting, binding, mounting, die-cutting, etc.).",
+				keywords: ["printing", "services", "type", "offer"]
+			},
+			{
+				question: "What is the maximum size for your riso printing?",
+				answer: "The maximum printing size of our riso machine is A3 (297*420mm).",
+				keywords: ["size", "dimension", "riso", "printing"]
+			},
+			{
+				question: "What types of printing paper do you have?",
+				answer: "We have about 20 types of uncoated paper. Please check our paper stock table. Please note that some papers like coated paper, tracing paper, Tyvek paper, washable paper are not suitable for our ink, we cannot print on these. The machine can handle paper weight from 60g to 250g.",
+				keywords: ["paper", "printing"]
+			},
+			{
+				question: "Can I customize my original work? Is there a minimum print run?",
+				answer: "We can customize your original work, the minimum print run is 15 (15 copies of the same content). Riso printing requires plate making and has relatively high cost, it is more expensive than regular printing.",
+				keywords: ["customize", "original", "quantity", "riso", "minimum", "print run"]
+			},
+			{
+				question: "How does MUDpress calculate the printing price?",
+				answer: "We calculate the price based on the number of colors (number of plates), number of prints (minimum 15), and paper (some papers require additional costs, please check the paper stock table). If you need to print a book, please contact us and let us know the size and number of pages of the book so we can calculate the cost.",
+				keywords: ["calculate", "price", "number of colors", "plates", "number of prints", "paper"]
+			},
+			{
+				question: "What effects can riso printing achieve?",
+				answer: "Riso printing results in some misalignment (we control within 3mm) and uneven color. There will be color difference between the printed work and the original work or printing effect picture depending on the grayscale value of the file. If you can't accept this, please look for other printing techniques such as: spot color, inkjet, screen printing, etc.",
+				keywords: ["effects", "printing", "riso"]
+			},
+			{
+				question: "What colors can I choose from?",
+				answer: "We currently have 17 colors (electronic color card), there is some difference between the electronic color card and the actual color. The status of the red drum is not good, if the work has a large area of red, please find other studios to print.",
+				keywords: ["color", "choose", "color card"]
+			},
+			{
+				question: "Where is your location?",
+				answer: "Our address is A3-3-107, Phoenix Creative Park, Zhuan Tang Town, Hangzhou City (you can navigate to Mud Culture Limited on Gaode, or search for Yingqing Movie on other navigation software).",
+				keywords: ["address", "location", "where"]
+			},
+			{
+				question: "What are your working hours?",
+				answer: "Our working hours are generally from 10:00 in the morning to 18:00 in the afternoon, specific dates vary. If you want to print on site, you need to make an appointment two days in advance, you can contact us to tell us the date and time you want to make an appointment.",
+				keywords: ["working hours", "appointment", "time", "weekend", "week"]
+			},
+			{
+				question: "How long does the printing process take?",
+				answer: "We can print up to two colors a day, then the work needs to be dried before continuing to print. The more colors, the longer the printing takes. If the work is printed without drying, it will be smudged by the wet ink.",
+				keywords: ["time", "printing process", "how long", "printing"]
+			},
+			{
+				question: "How to check the grayscale value (k value) of the file?",
+				answer: "To check the grayscale value (k value) of the file: Photoshop: Window, Information (F8), small horizontal bar in the upper right corner of the Information window, Panel options, select grayscale for the first color information. Move the mouse to any position of the work, the Information window will display the grayscale (k) value.",
+				keywords: ["grayscale value", "check", "k value"]
+			},
+			// Other questions and answers
+		];
+
+
+		// Q&A logic
+		function submitMessage() {
+			let inputbox = document.getElementById('inputbox');
+			let chatbox = document.getElementById('chatbox');
+			let userInput = inputbox.value.toLowerCase();  // Convert to lowercase for matching
+			let matchingQuestions = [];
+
+			// Display user's input
+			chatbox.innerHTML += `<p>You: ${inputbox.value}</p>`;
+
+			// Clear the input box
+			inputbox.value = '';
+
+			// Check each question to see if it contains the keyword from the user's input
+			for (let qaPair of qaPairs) {
+				for (let keyword of qaPair.keywords) {
+					if (userInput.includes(keyword)) {
+						matchingQuestions.push(qaPair);
+						break;  // When a matching keyword is found, break out of the inner loop
+					}
+				}
+			}
+
+            // If no matching questions are found, pick two random questions
+            if (matchingQuestions.length === 0) {
+                let msg = "Hello, I'm glad to serve you. You can type the question you want to ask. For example, do you want to ask:<br>";
+                for (let i = 0; i < 2; i++) {
+                let randomIndex = Math.floor(Math.random() * qaPairs.length);
+                msg += ` <a href="#" onclick="reply('${qaPairs[randomIndex].answer}')"><u>${qaPairs[randomIndex].question}</a><br>`;
+            	}
+                msg += '';
+                chatbox.innerHTML += `<p>MUDpress Helper:${msg}</p>`;
+            }else if (matchingQuestions.length === 1) {
+				// If there is one matching question, list that question
+				let msg = 'Hello, do you want to ask:<br>';
+				for (let qaPair of matchingQuestions) {
+					msg += ` <a href="#" onclick="reply('${qaPair.answer}')"><u>${qaPair.question}</a>`;
+				}
+				msg += '';
+				chatbox.innerHTML += `<p>MUDpress Helper: ${msg}</p>`;
+            } else {
+				// If there are matching questions, list all matching questions
+				let msg = 'Hello, do you want to ask:<br>';
+				for (let qaPair of matchingQuestions) {
+					msg += ` <a href="#" onclick="reply('${qaPair.answer}')"><u>${qaPair.question}</a><br>`;
+				}
+				msg += '';
+				chatbox.innerHTML += `<p>MUDpress Helper: ${msg}</p>`;
+            }
+
+            // Scroll to the bottom of the chatbox
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function reply(answer) {
+		event.preventDefault(); // Prevent default link behavior
+
+			let chatbox = document.getElementById('chatbox');
+			chatbox.innerHTML += `<p>MUDpress Helper: ${answer}</p>`;
+			chatbox.scrollTop = chatbox.scrollHeight;
+		}
+
+	</script>
+
+
+			</main> <!-- .main-content -->
+
+                <footer class="site-footer">
+                    <div class="container">
+                        <div class="pull-left">
+
+                             <address>
+                                <strong>泥巴印制 | MUDpress ©</strong>
+								<p>  </p>
+<!--                                <p>浙江省杭州市西湖区转塘镇凤凰创意国际A3幢-3单元-107室</p>-->
+								<p>Room 107, Unit 3, Building A3, Phoenix Creative Park, Zhuantang Town, Xihu District, Hangzhou, Zhejiang Province, China</p>
+                            </address>
+<!--                                <p>浙江省杭州市西湖区转塘镇凤凰创意国际A3幢-3单元-107室</p>-->
+
+<!--                            <a href="#" class="email">gssbspace@126.com     partylinhai@gmail.com</a>-->
+<!--							<p>mudpress@163.com</p>-->
+                        </div> <!-- .pull-left -->
+                        <div class="pull-right">
+
+                            <div class="social-links">
+<!--                                <a href="#"><i class="fa fa-facebook"></i></a>-->
+<!--                                <a href="#"><i class="fa fa-google-plus"></i></a>-->
+<!--                                <a href="#"><i class="fa fa-twitter"></i></a>-->
+<!--                                <a href="#"><i class="fa fa-pinterest"></i></a>-->
+								<a href="contact-en.html">con-</a>
+								<a href="contact-en.html">tact</a>
+								<a href="contact-en.html">U</a>
+								<a href="contact-en.html">S</a>
+
+                            </div>
+
+                        </div> <!-- .pull-right -->
+
+                        <div class="colophon">Copyright © 2020-2023. Designed by <a href="http://mudpress.net/" title="Designed by mudpress.net" target="_blank">MUDpress</a>. All rights reserved.</div>
+
+                    </div> <!-- .container -->
+                </footer> <!-- .site-footer -->
+            </div>
+
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+
+	</body>
+
+</html>
