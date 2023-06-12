@@ -49,11 +49,15 @@ body {
   margin: 0; }
 
 a {
-  background: transparent; }
+  background: transparent;
+  /*color: #ffff00;    !* 添加这一行 *!*/
+}
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
     outline: 0; }
+
+
 
 h1 {
   font-size: 2em;
@@ -233,7 +237,7 @@ ul, ol {
 
 a {
   text-decoration: none;
-  color: #ff0000; }//重要字体颜色。原：f4c545
+  color: #b36d41; }//重要字体颜色。原：f4c545
 
 address {
   font-style: normal; }
@@ -1269,11 +1273,12 @@ form input[type="submit"], form button, form input[type="reset"] {
     height: 0; }
 
 #branding {
-  float: left;
+  float: right;
   margin-top: 20px; }
   #branding .logo, #branding .logo-text {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    color: #b36d41; }
   #branding .logo {
     margin-right: 10px; }
   #branding .site-title {
@@ -1287,10 +1292,10 @@ form input[type="submit"], form button, form input[type="reset"] {
   #branding .site-description {
     font-size: 11px;
     font-size: 0.7857142857em;
-    color: #585858; }
+    color: #000000; }
 
 .main-navigation {
-  float: right; }
+  float: left; }
   .main-navigation .menu-toggle {
     background: none;
     border: none;
@@ -1331,8 +1336,8 @@ form input[type="submit"], form button, form input[type="reset"] {
     .main-navigation .menu-item:last-child a:after {
       display: none; }
     .main-navigation .menu-item.current-menu-item a, .main-navigation .menu-item:hover a {
-      color: #f4c545;
-      border-bottom: 2px solid #f4c545; }
+      color: #b36d41;
+      border-bottom: 2px solid #b36d41; }
 
 .mobile-navigation {
   clear: both;
@@ -1427,7 +1432,8 @@ form input[type="submit"], form button, form input[type="reset"] {
   font-size: 2.5714285714em;
   letter-spacing: 2px;
   font-weight: 300;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #b36d41}
 
 .separator {
   border: none;
@@ -1557,7 +1563,8 @@ form input[type="submit"], form button, form input[type="reset"] {
     font-size: 2.5714285714em;
     list-style: 3px;
     font-weight: 300;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    color: #b36d41}
   .page p {
     font-size: 16px;
     font-size: 1.1428571429em;
@@ -1761,7 +1768,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     display: inline-block;
     text-align: center;
     margin-left: 10px;
-    color: #d3d3d3;
+    color: #b36d41;
     line-height: 2.5;
     -webkit-transition: .3s ease;
             transition: .3s ease; }
