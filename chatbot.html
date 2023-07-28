@@ -8,7 +8,7 @@
 document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault();
     const user_input = document.getElementById('user_input').value;
-    fetch('http://your-server-ip:5000/get_response', {
+    fetch('http://54.238.226.108:5000/get_response', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
