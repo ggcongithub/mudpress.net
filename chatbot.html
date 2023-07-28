@@ -1,0 +1,23 @@
+<form id="form">
+    <input type="text" id="user_input">
+    <button type="submit">Send</button>
+</form>
+<div id="response"></div>
+
+<script>
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const user_input = document.getElementById('user_input').value;
+    fetch('http://your-server-ip:5000/get_response', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user_input: user_input})
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('response').innerText = data.response;
+    });
+});
+</script>
