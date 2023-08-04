@@ -1,23 +1,24 @@
-<form id="form">
-    <input type="text" id="user_input">
-    <button type="submit">Send</button>
-</form>
-<div id="response"></div>
-
-<script>
-document.getElementById('form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const user_input = document.getElementById('user_input').value;
-    fetch('http://54.238.226.108:5000/get_response', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({user_input: user_input})
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('response').innerText = data.response;
-    });
-});
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form id="chat-form">
+        <label for="content">Your question:</label><br>
+        <input type="text" id="content" name="content"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="response"></div>
+    <script>
+        $("#chat-form").submit(function(event) {
+            event.preventDefault();
+            var user_input = $("#content").val();
+            $.post("http://54.238.226.108/chat", { content: user_input }, function(data) {
+                $("#response").text(data);
+            });
+        });
+    </script>
+</body>
+</html>
