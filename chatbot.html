@@ -15,7 +15,7 @@
         $("#chat-form").submit(function(event) {
             event.preventDefault();
             var user_input = $("#content").val();
-            $.post("http://54.238.226.108/chat", { content: user_input }, function(data) {
+            $.post("http://54.238.226.108:5000/chat", { content: user_input }, function(data) {
                 $("#response").text(data);
             });
         });
